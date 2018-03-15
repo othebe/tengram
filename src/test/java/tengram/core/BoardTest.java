@@ -23,7 +23,7 @@ public class BoardTest {
     @Test
     public void shouldPlacePieces() {
         // Arrange
-        Piece piece = new Piece(1, 3);
+        Piece piece = new Piece("A", 1, 3);
 
         // Act
         board.placePiece(piece, 0, 0, Orientation.NORMAL);
@@ -37,7 +37,7 @@ public class BoardTest {
     @Test
     public void shouldPlacePiecesWithClockwiseOrientation() {
         // Arrange
-        Piece piece = new Piece(1, 3);
+        Piece piece = new Piece("A", 1, 3);
 
         // Act
         board.placePiece(piece, 0, 0, Orientation.CLOCKWISE);
@@ -51,8 +51,8 @@ public class BoardTest {
     @Test
     public void shouldNotAllowOverlappingPieces() {
         // Arrange
-        Piece piece1 = new Piece(1, 1);
-        Piece piece2 = new Piece(1, 1);
+        Piece piece1 = new Piece("A", 1, 1);
+        Piece piece2 = new Piece("B", 1, 1);
 
         // Act + Assert
         assertTrue("Is valid move", board.canPlacePiece(piece1, 0, 0, Orientation.NORMAL));
@@ -63,8 +63,8 @@ public class BoardTest {
     @Test
     public void shouldThrowExceptionForOverlappingPieces() {
         // Arrange
-        Piece piece1 = new Piece(1, 1);
-        Piece piece2 = new Piece(1, 1);
+        Piece piece1 = new Piece("C", 1, 1);
+        Piece piece2 = new Piece("D", 1, 1);
 
         expectedException.expect(Exception.class);
 
@@ -76,8 +76,8 @@ public class BoardTest {
     @Test
     public void shouldNotAllowOverlappingPiecesWithClockwiseOrientation() {
         // Arrange
-        Piece piece1 = new Piece(1, 3);
-        Piece piece2 = new Piece(1, 1);
+        Piece piece1 = new Piece("A", 1, 3);
+        Piece piece2 = new Piece("B", 1, 1);
 
         // Act + Assert
         assertTrue("Is valid move", board.canPlacePiece(piece1, 0, 0, Orientation.CLOCKWISE));
@@ -88,8 +88,8 @@ public class BoardTest {
     @Test
     public void shouldThrowExceptionForOverlappingPiecesWithClockwiseOrientation() {
         // Arrange
-        Piece piece1 = new Piece(1, 3);
-        Piece piece2 = new Piece(1, 1);
+        Piece piece1 = new Piece("A", 1, 3);
+        Piece piece2 = new Piece("B", 1, 1);
 
         expectedException.expect(Exception.class);
 
@@ -101,7 +101,7 @@ public class BoardTest {
     @Test
     public void shouldNotAllowPiecesOutsideBoard() {
         // Arrange
-        Piece piece1 = new Piece(1, 3);
+        Piece piece1 = new Piece("A", 1, 3);
 
         // Act + Assert
         assertFalse("Is invalid move", board.canPlacePiece(piece1, 11, 0, Orientation.NORMAL));
@@ -110,7 +110,7 @@ public class BoardTest {
     @Test
     public void shouldThrowExceptionForPiecesOutsideBoard() {
         // Arrange
-        Piece piece1 = new Piece(1, 3);
+        Piece piece1 = new Piece("A", 1, 3);
 
         expectedException.expect(Exception.class);
 
@@ -121,7 +121,7 @@ public class BoardTest {
     @Test
     public void shouldNotAllowPiecesOutsideBoardWithClockwiseOrientation() {
         // Arrange
-        Piece piece1 = new Piece(1, 3);
+        Piece piece1 = new Piece("A", 1, 3);
 
         // Act + Assert
         assertFalse(board.canPlacePiece(piece1, 9, 0, Orientation.CLOCKWISE));
@@ -130,7 +130,7 @@ public class BoardTest {
     @Test
     public void shouldThrowExceptionForPiecesOutsideBoardWithClockwiseOrientation() {
         // Arrange
-        Piece piece1 = new Piece(1, 3);
+        Piece piece1 = new Piece("A", 1, 3);
 
         expectedException.expect(Exception.class);
 
