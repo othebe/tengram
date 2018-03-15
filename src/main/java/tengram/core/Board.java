@@ -12,7 +12,7 @@ public class Board {
      * @return Integer representing board width.
      */
     public int getWidth() {
-        return grid.length;
+        return grid.length == 0 ? 0 : grid[0].length;
     }
 
     /**
@@ -20,7 +20,7 @@ public class Board {
      * @return Integer representing board height.
      */
     public int getHeight() {
-        return grid.length == 0 ? 0 : grid[0].length;
+        return grid.length;
     }
 
     /**
