@@ -1,2 +1,5 @@
-.idea
 target
+azureSettings.xml
+workspace.xml
+Maven__junit_junit_4_12.xml
+Maven__org_hamcrest_hamcrest_core_1_3.xml
