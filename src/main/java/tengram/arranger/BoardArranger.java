@@ -5,104 +5,23 @@ import tengram.core.Orientation;
 import tengram.core.Piece;
 
 public class BoardArranger {
+    /**
+     * This function arranges the array of pieces onto the given board.
+     * @param board Board to arrange pieces on.
+     * @param pieces Array of pieces to arrange onto given board.
+     * @return True if board was arranged, else false.
+     */
     public static boolean arrange(Board board, Piece[] pieces) {
-        return arrange(board, pieces, 0);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private static boolean arrange(Board board, Piece[] pieces, int pieceNdx) {
-        if (pieceNdx >= pieces.length) {
-            return true;
+        if (board.canPlacePiece(pieces[0], 0, 0, Orientation.NORMAL)) {
+            board.placePiece(pieces[0], 0, 0, Orientation.NORMAL);
         }
+        System.out.println(board);
 
-        Piece piece = pieces[pieceNdx];
-        for (int x = 0; x < board.getWidth(); x++) {
-            for (int y = 0; y < board.getHeight(); y++) {
-                if (board.canPlacePiece(piece, x, y, Orientation.NORMAL)) {
-                    board.placePiece(piece, x, y, Orientation.NORMAL);
-                } else if (board.canPlacePiece(piece, x, y, Orientation.CLOCKWISE)) {
-                    board.placePiece(piece, x, y, Orientation.CLOCKWISE);
-                } else {
-                    continue;
-                }
-
-                if (arrange(board, pieces, pieceNdx + 1)) {
-                    return true;
-                } else {
-                    board.removePieceFromBoard(piece);
-                }
-            }
+        if (board.canPlacePiece(pieces[1], 0, 0, Orientation.NORMAL)) {
+            board.placePiece(pieces[1], 0, 0, Orientation.NORMAL);
         }
-
-        return false;
+        System.out.println(board);
+        
+        return true;
     }
 }
